@@ -41,10 +41,10 @@ jobs:
 
 before_install:
   - if [[ $(uname -m) == 'aarch64' ]];then export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-arm64";fi
-  - echo "Downloading Maven 3.5.3"
-  - wget https://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.zip
-  - unzip -qq -o apache-maven-3.5.3-bin.zip
-  - export M2_HOME=$PWD/apache-maven-3.5.3
+  - echo "Downloading Maven 3.8.1"
+  - wget --quiet https://archive.apache.org/dist/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.zip
+  - unzip -qq -o apache-maven-3.8.1-bin.zip
+  - export M2_HOME=$PWD/apache-maven-3.8.1
   - export PATH=$M2_HOME/bin:$PATH
   - mvn -version
   - echo "MAVEN_OPTS='-Xms1024m -Xmx3072m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=384m'" > ~/.mavenrc
