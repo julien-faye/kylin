@@ -40,7 +40,10 @@ jobs:
       jdk: openjdk8
 
 before_install:
-  - if [[ $(uname -m) == 'aarch64' ]];then export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-arm64";fi
+  - if [[ $(uname -m) == 'aarch64' ]];then 
+      export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-arm64";
+      export PATH="$JAVA_HOME/bin:$PATH";
+    fi
   - echo "Downloading Maven 3.8.1"
   - wget --quiet https://archive.apache.org/dist/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.zip
   - unzip -qq -o apache-maven-3.8.1-bin.zip
