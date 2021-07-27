@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 ---
+language: generic
+
 addons:
   sonarcloud:
     organization: "kylin"
@@ -50,7 +52,7 @@ before_install:
   - sed -i 's/log4j.logger.org.apache.kylin=INFO/log4j.logger.org.apache.kylin=WARN/g' build/conf/kylin-tools-log4j.properties
 
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test coveralls:report -e
+  - mvn --no-transfer-progress clean org.jacoco:jacoco-maven-plugin:prepare-agent test coveralls:report -e
   - if [[ -n "${TRAVIS_PULL_REQUEST_SLUG}" && "${TRAVIS_PULL_REQUEST_SLUG}" != "${TRAVIS_REPO_SLUG}" ]]; 
     then
         echo "The pull request from ${TRAVIS_PULL_REQUEST_SLUG} is an EXTERNAL pull request. Skip sonar analysis.";
