@@ -40,7 +40,7 @@ jobs:
       arch: amd64
       
 before_install:
-  - export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-${TRAVIS_CPU_ARCH};
+  - export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-${TRAVIS_CPU_ARCH}";
   - export PATH="$JAVA_HOME/bin:$PATH";
   - echo "Downloading Maven 3.8.1"
   - wget --quiet https://archive.apache.org/dist/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.zip
