@@ -19,6 +19,10 @@
 language: generic
 
 addons:
+  apt:
+    packages: 
+      - openjdk-8-jdk
+      - unzip
   sonarcloud:
     organization: "kylin"
     token:
@@ -31,19 +35,13 @@ cache:
 jobs:
   include:
     - name: Linux ARM64
-      arch: arm64
-      addons:
-        apt:
-          packages: openjdk-8-jdk
+      arch: arm64  
     - name: Linux x86
       arch: amd64
-      jdk: openjdk8
-
+      
 before_install:
-  - if [[ $(uname -m) == 'aarch64' ]];then 
-      export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-arm64";
-      export PATH="$JAVA_HOME/bin:$PATH";
-    fi
+  - export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-${TRAVIS_CPU_ARCH};
+  - export PATH="$JAVA_HOME/bin:$PATH";
   - echo "Downloading Maven 3.8.1"
   - wget --quiet https://archive.apache.org/dist/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.zip
   - unzip -qq -o apache-maven-3.8.1-bin.zip
