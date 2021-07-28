@@ -18,8 +18,6 @@
 ---
 language: generic
 
-sudo: false
-
 addons:
   apt:
     packages: 
@@ -37,9 +35,12 @@ cache:
 jobs:
   include:
     - name: Linux ARM64
-      arch: arm64  
-    - name: Linux x86
-      arch: amd64
+      arch: arm64-graviton2
+      dist: focal
+      virt: vm
+      group: edge
+#    - name: Linux x86
+#      arch: amd64
       
 before_install:
   - export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-${TRAVIS_CPU_ARCH}";
